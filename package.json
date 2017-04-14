@@ -1,0 +1,19 @@
+{
+  "name": "jwt-auth-boilerplate",
+  "version": "1.0.0",
+  "description": "JWT authenticate boilerplate express app",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thechutrain/jwt-auth-boilerplate.git"
+  },
+  "author": "Alan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thechutrain/jwt-auth-boilerplate/issues"
+  },
+  "homepage": "https://github.com/thechutrain/jwt-auth-boilerplate#readme"
+}
