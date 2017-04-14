@@ -12,3 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   2. changelog.md
   3. .gitignore
   4. server/server.js
+
+## [0.1] - 2017-04-14
+### Added
+- created basic server.js file, without passport or routes.
+
