@@ -21,9 +21,18 @@ app.engine('handlebars', exphbs({
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials')
 }))
-// set up passport 
+// set up passport
+
 
 // ========== start server ============
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`)
-})
+// connect to the database
+require('./models').connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('connected to the database ...')
+    app.listen(PORT, () => {
+      console.log(`Listening on port: ${PORT}`)
+    })
+  })
+  .catch(() => {
+    console.log('Mongo DB connection error')
+  })

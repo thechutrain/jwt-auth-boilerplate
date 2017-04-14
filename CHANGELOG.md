@@ -17,3 +17,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - created basic server.js file, without passport or routes.
 
+## [0.2] - 2017-04-14
+### Added
+- added a mongo connection index.js file that returns a promise
