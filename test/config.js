@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 module.exports.connect = (uri) => {
   // return new Promise((resolve, reject) => {
+    console.log(uri)
     mongoose.Promise = global.Promise
     const options = {}
     mongoose.connect(uri, options, function(err) {
