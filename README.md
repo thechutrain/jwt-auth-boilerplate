@@ -19,6 +19,7 @@ To Do // Tasks:
 * [x] create a basic mongo database file and get it set up properly 
 * [x] create a separate mongo testing database
 * [x] set up travis ci for mongo testing
-* [] set up bycrypt pre-save for user password
-* [] set up local strategy for passport.js
-* [] Deploy to Heroku
+* [ ] set up bycrypt pre-save for user password
+* [ ] set up local strategy for passport.js
+* [ ] Deploy to Heroku
+
