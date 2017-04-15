@@ -23,8 +23,10 @@ app.engine('handlebars', exphbs({
 }))
 // set up passport
 
+
 // testing 
-app.get('/', (req, res) => { res.json({ msg: 'hello world' })})
+app.get('/test', (req, res) => { res.json({ msg: 'hello world' })})
+app.use('/', require('./controllers/htmlRouter'))
 
 // ========== start server ============
 

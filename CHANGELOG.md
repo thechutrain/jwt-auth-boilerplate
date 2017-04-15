@@ -34,3 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.5] - 2017-04-14
 ### Added
 - set up Travis CI testing
+
+## [0.6] - 2017-04-15
+### Added
+- set up views, bootstrapped some login / registration pages

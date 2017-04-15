@@ -29,7 +29,7 @@ describe(title, () => {
 
   it('should be able to make a request', (done) => {
     chai.request(server)
-      .get('/')
+      .get('/test')
       .end((err, res) => {
         expect(err).to.be.null()
         expect(res).to.have.status(200)
