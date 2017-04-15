@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 module.exports.connect = (uri) => {
-  // return new Promise((resolve, reject) => {
-    console.log('===================')
-    console.log(uri)
-    console.log('===================')
-
     mongoose.Promise = global.Promise
     const options = {}
     mongoose.connect(uri, options, function(err) {
@@ -14,12 +9,9 @@ module.exports.connect = (uri) => {
         // reject()
       } else {
         console.log(`Successfully connected to db @ "${uri}"`)
-        // resolve()
       }
-      // console.log(mongoose.connection.readyState)
     })
   }
-  // }) // ends Promise
 
 module.exports.database = mongoose
 

@@ -1,4 +1,6 @@
 ### jwt-auth-boilerplate
+[![Build Status](https://travis-ci.org/thechutrain/jwt-auth-boilerplate.svg?branch=master)](https://travis-ci.org/thechutrain/jwt-auth-boilerplate)
+
 > a JWT authentication express.js boilerplate app built w./ handlebars + mongo
 
 Getting Started
@@ -16,4 +18,4 @@ TO DO's
 [x] make a basic server.js page & install dependencies
 [x] create a basic mongo database file and get it set up properly 
 [x] create a separate mongo testing database
-[] set up travis ci for mongo testing
+[x] set up travis ci for mongo testing
