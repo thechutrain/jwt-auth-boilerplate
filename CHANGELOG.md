@@ -26,3 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - added server tests
 ### BUGS // TO DO
 - need to create a testing database && easy way to drop & restart
+
+## [0.4] - 2017-04-14
+### Added
+- added separate testing database, connection files etc.
