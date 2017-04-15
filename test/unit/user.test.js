@@ -3,8 +3,6 @@
 const chai = require('chai')
 const dirtyChai = require('dirty-chai')
 const expect = require('chai').expect
-const chaiHttp = require('chai-http')
-chai.use(chaiHttp)
 chai.use(dirtyChai)
 
 // server, database, and testing config files
@@ -15,7 +13,7 @@ const User = require('../config').User
 const title = 
 `
 ==============================
-Integration TEST - testing chai-http
+UNIT TEST - user collection
 ==============================
 `
 
@@ -27,14 +25,33 @@ describe(title, () => {
     })
   })
 
-  it('should be able to make a request', (done) => {
-    chai.request(server)
-      .get('/')
-      .end((err, res) => {
-        expect(err).to.be.null()
-        expect(res).to.have.status(200)
-        console.log(res.body)
-        done()
-      })
+  it('should be an empty user table', (done) => {
+    User.find({}).exec((err, queryResult) => {
+      // console.log(queryResult)
+      expect(queryResult).to.have.lengthOf(0)
+      done()
+    })
   })
+
+  it('should let me add a new user', (done) => {
+    const alan = new User({
+      username: 'alan',
+      password: 'secret'
+    })
+    alan.save((err) => {
+      if (!err) {
+        done()
+      }
+    })
+  })
+
+  it('should be able to find the new user', (done) => {
+    User.find({}).exec((err, queryResult) => {
+      // console.log(queryResult)
+      expect(queryResult).to.have.lengthOf(1)
+      done()
+    })
+  })
+
+
 })

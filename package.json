@@ -4,7 +4,9 @@
   "description": "JWT authenticate boilerplate express app",
   "main": "server/server.js",
   "scripts": {
-    "test": "export PORT=8080 NODE_ENV='testing'; find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
+    "connect-test-db": "export PORT=8080 NODE_ENV='testing'; node ./test/connection.js",
+    "mocha-tests": "export PORT=8080 NODE_ENV='testing'; find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
+    "test": "concurrently \"npm run connect-test-db\" \"npm run mocha-tests\" ",
     "dev": "nodemon server/server.js"
   },
   "repository": {
@@ -21,6 +23,7 @@
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "concurrently": "^3.4.0",
     "dirty-chai": "^1.2.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",

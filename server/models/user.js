@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-mongoose.Promise = global.Promise
+// mongoose.Promise = global.Promise
 
 // 1. Create user schema
 const userSchema = new Schema({

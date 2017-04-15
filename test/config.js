@@ -1,21 +1,23 @@
 const mongoose = require('mongoose')
 
 module.exports.connect = (uri) => {
-  return new Promise((resolve, reject) => {
+  // return new Promise((resolve, reject) => {
     mongoose.Promise = global.Promise
     const options = {}
     mongoose.connect(uri, options, function(err) {
       if (err) { 
         console.log(err)
-        reject()
+        // reject()
       } else {
         console.log(`Successfully connected to db @ "${uri}"`)
-        resolve()
+        // resolve()
       }
+      // console.log(mongoose.connection.readyState)
     })
-    // load models
-    require('../server/models/user')
-  }) // ends Promise
-}
+  }
+  // }) // ends Promise
 
 module.exports.database = mongoose
+
+// load models
+module.exports.User = require('../server/models/user')
