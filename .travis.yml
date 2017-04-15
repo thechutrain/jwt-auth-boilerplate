@@ -13,3 +13,5 @@ install:
   - sleep 3
 script:
   - mongo --eval 'db.hostInfo()'
+  - npm install
+  - npm run travis-test

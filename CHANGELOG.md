@@ -30,3 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.4] - 2017-04-14
 ### Added
 - added separate testing database, connection files etc.
+
+## [0.5] - 2017-04-14
+### Added
+- set up Travis CI testing
