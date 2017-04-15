@@ -12,10 +12,13 @@ MONGODB_URI="mongodb://localhost/[name-of-your-database]"
 
 * if you're using BASH, and not a zsh shell, take out the export statement in the test script ...
 
-TO DO's
+To Do // Tasks:
 -------
 * [x] project set up & readme.md
 * [x] make a basic server.js page & install dependencies
 * [x] create a basic mongo database file and get it set up properly 
 * [x] create a separate mongo testing database
 * [x] set up travis ci for mongo testing
+* [] set up bycrypt pre-save for user password
+* [] set up local strategy for passport.js
+* [] Deploy to Heroku
