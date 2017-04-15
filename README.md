@@ -14,4 +14,6 @@ TO DO's
 -------
 [x] project set up & readme.md
 [x] make a basic server.js page & install dependencies
-[] create a basic mongo database file and get it set up properly 
+[x] create a basic mongo database file and get it set up properly 
+[x] create a separate mongo testing database
+[] set up travis ci for mongo testing
