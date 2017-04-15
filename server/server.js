@@ -23,6 +23,8 @@ app.engine('handlebars', exphbs({
 }))
 // set up passport
 
+// testing 
+app.get('/', (req, res) => { res.json({ msg: 'hello world' })})
 
 // ========== start server ============
 // connect to the database
@@ -36,3 +38,5 @@ require('./models').connect(process.env.MONGODB_URI)
   .catch(() => {
     console.log('Mongo DB connection error')
   })
+
+module.exports = app

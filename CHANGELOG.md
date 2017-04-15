@@ -20,3 +20,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.2] - 2017-04-14
 ### Added
 - added a mongo connection index.js file that returns a promise
+
+## [0.3] - 2017-04-14
+### Added
+- added server tests
+### BUGS // TO DO
+- need to create a testing database && easy way to drop & restart
