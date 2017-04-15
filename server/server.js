@@ -7,8 +7,8 @@ require('dotenv').load()
 
 // ========== Create express app ============
 const app = express()
-app.set('x-powered-by', false)
 const PORT = process.env.PORT || 3000
+app.set('x-powered-by', false)
 
 // ========== middleware ============
 app.use(morgan('dev'))
@@ -24,8 +24,7 @@ app.engine('handlebars', exphbs({
   partialsDir: path.join(__dirname, '/views/partials')
 }))
 // set up passport
-const passport = require('./passport')
-
+// const passport = require('./passport')
 
 // testing 
 app.get('/test', (req, res) => { res.json({ msg: 'hello world' })})

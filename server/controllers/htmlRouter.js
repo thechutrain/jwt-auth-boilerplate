@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const passport = require('../passport')
-const checkAuth = require('../passport/checkAuth')
+// const passport = require('../passport')
+// const checkAuth = require('../passport/checkAuth')
+const adminOnly = require('../middleware/checkAuth').adminOnly
+const authUserOnly = require('../middleware/checkAuth').authUserOnly
+
 
 router.get('/', (req, res) => {
   res.render('home', { msg: 'this is a test'})
@@ -18,7 +21,7 @@ router.get('/register', (req, res) => {
 // router.get('/private', checkAuth, (req, res) => {
 //   res.json({msg: 'private message'})
 // })
-router.get('/private', checkAuth, (req, res) => {
+router.get('/private', authUserOnly, (req, res) => {
   res.json({msg: 'private message'})
 })
 

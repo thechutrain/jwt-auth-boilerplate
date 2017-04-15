@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 
 router.post('/register', (req, res) => {
   console.log('POST request to /auth/register')
+  // TO DO save user to the database
   res.json({ request: req.body })
 })
 

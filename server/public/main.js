@@ -1,6 +1,6 @@
 $(document).ready(function() {
   console.info('page was loaded')
-  // ========= Event Listeners ==============
+  // =========  TESTING Event Listeners ==============
   $('a#private-link').on('click', function(event) {
     event.preventDefault()
     // console.log('a#private-link was pressed yooo')
@@ -20,6 +20,13 @@ $(document).ready(function() {
     })
   })
 
+  $('a#logout-link').on('click', function(event) {
+    event.preventDefault()
+    console.log(localStorage.getItem('token'))
+    localStorage.removeItem('token')
+    console.log('cleared token ...')
+    console.log(localStorage.getItem('token'))
+  })
   // ========= I. Event Listeners ==============
   $('button#login-btn').on('click', function(event) {
     event.preventDefault()
