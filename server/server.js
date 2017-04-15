@@ -7,6 +7,7 @@ require('dotenv').load()
 
 // ========== Create express app ============
 const app = express()
+app.set('x-powered-by', false)
 const PORT = process.env.PORT || 3000
 
 // ========== middleware ============

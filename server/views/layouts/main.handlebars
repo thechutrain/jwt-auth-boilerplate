@@ -11,8 +11,14 @@
   <div class="container">
     {{> navbar}}
     {{{ body }}}
+    <div class="row">
+      <h2>Data: </h2>
+      <div id="data-container">
+      </div>
+    </div>
     {{> footer}}
   </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
