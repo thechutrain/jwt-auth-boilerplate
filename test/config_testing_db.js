@@ -14,6 +14,8 @@ module.exports.connect = (uri) => {
       }
     })
     // load models
-    require('./user')
+    require('../server/models/user')
   }) // ends Promise
 }
+
+module.exports.database = mongoose
