@@ -23,8 +23,8 @@ app.engine('handlebars', exphbs({
   partialsDir: path.join(__dirname, '/views/partials')
 }))
 // set up passport
-const passport = require('passport')
-app.use(passport.initialize())
+// const passport = require('passport')
+// app.use(passport.initialize())
 // app.use('local-register', require('./passport/local-register'))
 
 // testing 

@@ -38,3 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.6] - 2017-04-15
 ### Added
 - set up views, bootstrapped some login / registration pages
+
+## [0.7] - 2017-04-15
+### Added
+- added client-side js for form handling etc
