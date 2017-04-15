@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3000
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, 'public')))
 // set up handlebars
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'handlebars')
@@ -22,11 +23,14 @@ app.engine('handlebars', exphbs({
   partialsDir: path.join(__dirname, '/views/partials')
 }))
 // set up passport
-
+const passport = require('passport')
+app.use(passport.initialize())
+// app.use('local-register', require('./passport/local-register'))
 
 // testing 
 app.get('/test', (req, res) => { res.json({ msg: 'hello world' })})
 app.use('/', require('./controllers/htmlRouter'))
+app.use('/auth', require('./controllers/authRouter'))
 
 // ========== start server ============
 
