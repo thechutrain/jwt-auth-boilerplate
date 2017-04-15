@@ -21,9 +21,25 @@ app.engine('handlebars', exphbs({
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials')
 }))
-// set up passport 
+// set up passport
+
+// testing 
+app.get('/', (req, res) => { res.json({ msg: 'hello world' })})
 
 // ========== start server ============
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`)
-})
+
+if(process.env.NODE_ENV !== 'testing') {
+  // connect to the database
+  require('./models').connect(process.env.MONGODB_URI)
+    .then(() => {
+      console.log('connected to the database ...')
+      app.listen(PORT, () => {
+        console.log(`Listening on port: ${PORT}`)
+      })
+    })
+    .catch(() => {
+      console.log('Mongo DB connection error')
+    })
+}
+
+module.exports = app
