@@ -7,6 +7,7 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  isAdmin: { type: Boolean }
   // created_at: Date,
   // updated_at: Date
 })

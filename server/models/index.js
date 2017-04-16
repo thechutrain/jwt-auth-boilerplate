@@ -17,3 +17,5 @@ module.exports.connect = (uri) => {
     require('./user')
   }) // ends Promise
 }
+
+// module.exports.User = user
