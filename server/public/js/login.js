@@ -1,28 +1,32 @@
 $(document).ready(function() {
   // console.info('page was loaded')
-  $('button#register-btn').on('click', function(event) {
+  $('button#login-btn').on('click', function(event) {
     event.preventDefault()
-    // 1. Get the form data
+    // 1. get form data
     var formData = {}
     $('form > div.form-group').each(function(i, element){
       var key = $(element).find('label').attr('for').trim()
       var value = $(element).find('input').val().trim()
       formData[key] = value
     })
+    // console.dir(formData)
+    // debugger
+
     // 2. make post request
-    axios.post('/auth/register', {
+    axios.post('/auth/login', {
       data: formData
-    }).then(function(response) {
+    }).then(function(response){
+      // console.log(response)
       if (response.data.error) {
-        console.warn('There was an error in your sign in')
+        alert('Could not sign you in')
         console.dir(response.data)
-        // console.warn(response.data.errorsArray.join(' // '))
       } else {
-        // redirect user to login page
-        alert("Successful registration! Press okay to continue!")
-        window.location.replace('/login')
+        // set token in localStorage
+        localStorage.setItem('token', response.data.token)
+        alert('Successful sign!')
+        window.location.replace('/')
       }
     })
-  }) // ends register-btn event listener
 
+  })
 })

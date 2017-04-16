@@ -4,11 +4,7 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 router.post('/register', (req, res) => {
-  let {username, password, password2} = req.body.data
-  // console.log(username)
-  // console.log(password)
-  // console.log(password2)
-  // console.log('=============')
+  const {username, password, password2} = req.body.data
   const errorsArray = []
   let isValid = true
   if (password !== password2) {
@@ -30,12 +26,10 @@ router.post('/register', (req, res) => {
     } else if (match.length !==0) {
       return res.json({ error: true, errorsArray: ['Already a user with that username']})
     }
-
     const userData = new User({
       username,
       password,
     })
-    // console.log(userData) // new object + _id
 
     userData.save((err) => {
         console.log('saving ...')
@@ -46,34 +40,39 @@ router.post('/register', (req, res) => {
         console.log('SUCCES!!')
         return res.json({ success: true })
     })
-    // return res.json({ error: true, errorsArray: ['Mongoose Error'] })
   })
 })
 
 router.post('/login', (req, res) => {
-  console.log('POST request to /auth/login')
-  // console.log(req.body)
-  User.findOne({ username: req.body.username }, (err, user) => {
-    if (err) {
-      return res.json({ err, error: true })
-    } else if (!user) {
-      console.log(`No username of "${req.body.username}" found ...`)
-      return res.json({ error: true })
-    } else if (user.password !== req.body.password) {
-      return res.json({ msg: 'wrong password', error: true })
+  const {username, password} = req.body.data
+  console.log(username)
+  User.findOne({ username }, (err, match) => {
+    console.log('Match: ', match)
+    // * check password will be a class method on User
+    function checkPassword(input_p, p) {
+      return input_p === p
     }
-    // Da money, make the token!
-    const payload = {
-      _id: user._id,
-      username: user.username,
-      isAdmin: false
+    if (err || match.length === 0) {
+      return res.json({ error: true, errorsArray: ['No match for that username']})
+    } 
+    else if (!checkPassword(password, match.password)) {
+      return res.json({ error: true, errorsArray: ['Password is incorrect']})
     }
-    
-    const token = jwt.sign(payload, process.env.JWT_PASSPHRASE)
-    // console.log(process.env.JWT_PASSPHRASE)
-    // console.log(token)
-    res.json({ token })
-  })
+    else {
+      console.log('making token ....')
+      // generate the token!!!
+      const payload = {
+        _id: match._id,
+        username: match.username,
+        isAdmin: match.isAdmin || false,
+        exp: Math.floor(Date.now() / 1000) + (60 * 60),
+      }
+
+      const token = jwt.sign(payload, process.env.JWT_PASSPHRASE)
+      console.log('Token: ', token)
+      res.json({ token })
+    } // closes else
+  }) // ends User.findOne query
 })
 
 module.exports = router
