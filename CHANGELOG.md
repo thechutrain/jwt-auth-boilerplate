@@ -42,3 +42,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.7] - 2017-04-15
 ### Added
 - added client-side js for form handling etc
+
+## [0.8] - 2017-04-15
+- messed up, experimental version
+
+## [0.9] - 2017-04-15
+### Added
+- working Beta version of the JWT authenticated paths without passport!
