@@ -6,6 +6,8 @@ $(document).ready(function(){
     if (proceed) {
       localStorage.removeItem('token')
       console.log(localStorage.getItem('token'))
+      debugger
+      window.location.replace(window.location.href)
     }
   })
 })

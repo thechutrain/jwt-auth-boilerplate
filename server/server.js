@@ -23,13 +23,11 @@ app.engine('handlebars', exphbs({
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials')
 }))
-// set up passport
-// const passport = require('./passport')
 
-// testing 
 app.get('/test', (req, res) => { res.json({ msg: 'hello world' })})
 app.use('/', require('./controllers/htmlRouter'))
 app.use('/auth', require('./controllers/authRouter'))
+app.use('/api', require('./controllers/apiRouter'))
 
 // ========== start server ============
 

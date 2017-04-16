@@ -59,7 +59,10 @@ router.post('/login', (req, res) => {
       return res.json({ error: true, errorsArray: ['Password is incorrect']})
     }
     else {
-      console.log('making token ....')
+      // console.log('making token ....')
+      // console.log(typeof match)
+      // console.log(typeof match.isAdmin)
+      // console.log('isAdmin??', match.isAdmin)
       // generate the token!!!
       const payload = {
         _id: match._id,
@@ -67,6 +70,7 @@ router.post('/login', (req, res) => {
         isAdmin: match.isAdmin || false,
         exp: Math.floor(Date.now() / 1000) + (60 * 60),
       }
+      console.dir(payload)
 
       const token = jwt.sign(payload, process.env.JWT_PASSPHRASE)
       console.log('Token: ', token)
