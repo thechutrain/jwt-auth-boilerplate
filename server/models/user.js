@@ -11,22 +11,22 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  isAdmin: { type: Boolean }
+  isAdmin: { type: Boolean, default: false }
   // created_at: Date,
   // updated_at: Date
 })
 
 // 2. user schema methods
 userSchema.methods = {
-  checkPassword: (inputPassword) => {
+  // Can't user arrow function yoooo! B/c wont bind to userSchema
+  checkPassword: function (inputPassword) {
     return bcrypt.compareSync(inputPassword, this.password)
   },
   hashPassword: (plainTextPassword) => {
-    const salt = bcrypt.genSaltSync(10)
-    const hash = bcrypt.hashSync(plainTextPassword, salt)
-    return hash
+    return bcrypt.hashSync(plainTextPassword, 10)
   }
 }
+
 
 // 3. hooks
 userSchema.pre('save', function (next) {

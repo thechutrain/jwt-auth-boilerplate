@@ -35,26 +35,18 @@ router.post('/register', validRegistration(), (req, res) => {
 router.post('/login', (req, res) => {
   const {username, password} = req.body.data
   console.log(username)
-  User.findOne({ username }, (err, match) => {
-    console.log('Match: ', match)
-    // * check password will be a class method on User
-    function checkPassword (passwordInput, p) {
-      return passwordInput === p
-    }
-    if (err || match.length === 0) {
-      return res.json({error: true, errorsArray: ['No match for that username']})
-    } else if (!checkPassword(password, match.password)) {
+  User.findOne({ username }, (err, userMatch) => {
+    console.log('userMatch: ', userMatch)
+    if (err || userMatch.length === 0) {
+      return res.json({error: true, errorsArray: ['No userMatch for that username']})
+    } else if (!userMatch.checkPassword(password)) {
       return res.json({error: true, errorsArray: ['Password is incorrect']})
     } else {
-      // console.log('making token ....')
-      // console.log(typeof match)
-      // console.log(typeof match.isAdmin)
-      // console.log('isAdmin??', match.isAdmin)
-      // generate the token!!!
       const payload = {
-        _id: match._id,
-        username: match.username,
-        isAdmin: match.isAdmin || false,
+        _id: userMatch._id,
+        username: userMatch.username,
+        isAdmin: userMatch.isAdmin || false,
+        // exp: Math.floor(Date.now() / 1000) + (60)
         exp: Math.floor(Date.now() / 1000) + (60 * 60)
       }
       console.dir(payload)
