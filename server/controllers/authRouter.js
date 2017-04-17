@@ -6,27 +6,25 @@ const jwt = require('jsonwebtoken')
 
 router.post('/register', validRegistration(), (req, res) => {
   const { username, password } = req.body
-
   // check if there is not a user names whatever
   User.find({ username }, (err, match) => {
     if (err) {
-      return res.json({ error: true, errorsArray: ['Error in finding User']})
-    } else if (match.length !==0) {
-      return res.json({ error: true, errorsArray: ['Already a user with that username']})
+      return res.json({error: true, errorsArray: ['Error in finding User']})
+    } else if (match.length !== 0) {
+      return res.json({error: true, errorsArray: ['Already a user with that username']})
     }
     const userData = new User({
       username,
-      password,
+      password
     })
-
     userData.save((err) => {
-        console.log('saving ...')
-        if (err) {
-          console.log('saving error!')
-          return res.json({ error: true, errorsArray: ['Saving Error']})
-        }
-        console.log('SUCCES!!')
-        return res.json({ success: true })
+      console.log('saving ...')
+      if (err) {
+        console.log('saving error!')
+        return res.json({error: true, errorsArray: ['Saving Error']})
+      }
+      console.log('SUCCES!!')
+      return res.json({ success: true })
     })
   })
 })
@@ -37,16 +35,14 @@ router.post('/login', (req, res) => {
   User.findOne({ username }, (err, match) => {
     console.log('Match: ', match)
     // * check password will be a class method on User
-    function checkPassword(input_p, p) {
-      return input_p === p
+    function checkPassword (passwordInput, p) {
+      return passwordInput === p
     }
     if (err || match.length === 0) {
-      return res.json({ error: true, errorsArray: ['No match for that username']})
-    } 
-    else if (!checkPassword(password, match.password)) {
-      return res.json({ error: true, errorsArray: ['Password is incorrect']})
-    }
-    else {
+      return res.json({error: true, errorsArray: ['No match for that username']})
+    } else if (!checkPassword(password, match.password)) {
+      return res.json({error: true, errorsArray: ['Password is incorrect']})
+    } else {
       // console.log('making token ....')
       // console.log(typeof match)
       // console.log(typeof match.isAdmin)
@@ -56,7 +52,7 @@ router.post('/login', (req, res) => {
         _id: match._id,
         username: match.username,
         isAdmin: match.isAdmin || false,
-        exp: Math.floor(Date.now() / 1000) + (60 * 60),
+        exp: Math.floor(Date.now() / 1000) + (60 * 60)
       }
       console.dir(payload)
 

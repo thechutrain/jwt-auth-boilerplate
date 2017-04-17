@@ -4,8 +4,8 @@ module.exports.connect = (uri) => {
   return new Promise((resolve, reject) => {
     mongoose.Promise = global.Promise
     const options = {}
-    mongoose.connect(uri, options, function(err) {
-      if (err) { 
+    mongoose.connect(uri, options, function (err) {
+      if (err) {
         console.log(err)
         reject()
       } else {

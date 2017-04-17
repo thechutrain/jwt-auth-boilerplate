@@ -4,7 +4,7 @@
         "standard",
         "promise"
     ],
-    "parserOptions": {
+   "parserOptions": {
         "ecmaVersion": 6
     }
 }

@@ -8,7 +8,8 @@
     "mocha-tests": "export PORT=8080 NODE_ENV='testing'; find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
     "test": "concurrently \"npm run connect-test-db\" \"npm run mocha-tests\" ",
     "travis-test": "find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
-    "dev": "nodemon server/server.js"
+    "dev": "nodemon server/server.js",
+    "lint": "node_modules/.bin/eslint --fix server/"
   },
   "repository": {
     "type": "git",

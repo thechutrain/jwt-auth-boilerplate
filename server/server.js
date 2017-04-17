@@ -24,14 +24,14 @@ app.engine('handlebars', exphbs({
   partialsDir: path.join(__dirname, '/views/partials')
 }))
 
-app.get('/test', (req, res) => { res.json({ msg: 'hello world' })})
+app.get('/test', (req, res) => { res.json({ msg: 'hello world' }) })
 app.use('/', require('./controllers/htmlRouter'))
 app.use('/auth', require('./controllers/authRouter'))
 app.use('/api', require('./controllers/apiRouter'))
 
 // ========== start server ============
 
-if(process.env.NODE_ENV !== 'testing') {
+if (process.env.NODE_ENV !== 'testing') {
   // connect to the database
   require('./models').connect(process.env.MONGODB_URI)
     .then(() => {

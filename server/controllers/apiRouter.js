@@ -4,17 +4,16 @@ const adminOnly = require('../middleware/checkAuth').adminOnly
 const authUserOnly = require('../middleware/checkAuth').authUserOnly
 // const jwt = require('jsonwebtoken')
 
-router.get('/logged-in-only/data', authUserOnly, (req, res) => {
+router.get('/logged-in-only/data', authUserOnly(), (req, res) => {
   const user = req.user
-  console.log(user)
   let msg = 'Super secret message for this user ...' + JSON.stringify(user, null, 4)
   res.json({ msg })
 })
 
-router.get('/admin-only/data', adminOnly, (req, res) => {
-  const user = req.user
+router.get('/admin-only/data', adminOnly(), (req, res) => {
+  // const user = req.user
   // console.log(user)
-   let msg = 'Super secret message for this ADMIN ONLY!! ;)'
+  const msg = 'Super secret message for this ADMIN ONLY!! ;)'
   res.json({ msg })
 })
 
