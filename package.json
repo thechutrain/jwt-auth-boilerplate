@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/thechutrain/jwt-auth-boilerplate#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",

@@ -40,8 +40,9 @@ if (process.env.NODE_ENV !== 'testing') {
         console.log(`Listening on port: ${PORT}`)
       })
     })
-    .catch(() => {
+    .catch((err) => {
       console.log('Mongo DB connection error')
+      console.log(err)
     })
 }
 

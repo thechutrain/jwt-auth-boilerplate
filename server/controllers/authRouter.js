@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken')
 
 router.post('/register', validRegistration(), (req, res) => {
   const { username, password } = req.body
+  console.log(username)
+  console.log(password)
   // check if there is not a user names whatever
   User.find({ username }, (err, match) => {
     if (err) {
@@ -21,6 +23,7 @@ router.post('/register', validRegistration(), (req, res) => {
       console.log('saving ...')
       if (err) {
         console.log('saving error!')
+        console.log(err)
         return res.json({error: true, errorsArray: ['Saving Error']})
       }
       console.log('SUCCES!!')
