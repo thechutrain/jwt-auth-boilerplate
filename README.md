@@ -3,6 +3,10 @@
 
 > a JWT authentication express.js boilerplate app built w./ handlebars + mongo
 
+Demo
+------------
+![demo](./.notes/jwt-beta-demo.gif)
+
 Getting Started
 ---------------
 make a .env file in your root directory
