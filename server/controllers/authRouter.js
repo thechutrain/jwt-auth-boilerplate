@@ -1,23 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const validRegistration = require('../middleware/validator').validRegistration
 const jwt = require('jsonwebtoken')
 
-router.post('/register', (req, res) => {
-  const {username, password, password2} = req.body.data
-  const errorsArray = []
-  let isValid = true
-  if (password !== password2) {
-    errorsArray.push('Passwords must match')
-    isValid = false
-  } else if (password === "") {
-    errorsArray.push('Password cannot be empty')
-    isValid = false
-  }
-  // TO DO more validation??
-  if (!isValid) {
-    return res.json({ error: true, errorsArray })
-  }
+router.post('/register', validRegistration(), (req, res) => {
+  const { username, password } = req.body
 
   // check if there is not a user names whatever
   User.find({ username }, (err, match) => {
