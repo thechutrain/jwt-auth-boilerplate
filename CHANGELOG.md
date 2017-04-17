@@ -49,3 +49,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.9] - 2017-04-15
 ### Added
 - working Beta version of the JWT authenticated paths without passport!
+- added a demo gif
