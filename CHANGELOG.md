@@ -50,3 +50,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - working Beta version of the JWT authenticated paths without passport!
 - added a demo gif
+
+## [1.0] - 2017-04-17
+### Added
+- added bcrypt for hashing passwords and saving them in mongo db

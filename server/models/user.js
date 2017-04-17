@@ -23,13 +23,14 @@ userSchema.methods = {
     return bcrypt.compareSync(inputPassword, this.password)
   },
   hashPassword: (plainTextPassword) => {
+    // this.password = bcrypt.hashSync(plainTextPassword, 10)
     return bcrypt.hashSync(plainTextPassword, 10)
   }
 }
 
-
 // 3. hooks
 userSchema.pre('save', function (next) {
+  // this.hashPassword(this.password)
   this.password = this.hashPassword(this.password)
   next()
 })
