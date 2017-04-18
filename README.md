@@ -3,6 +3,8 @@
 
 > a JWT authentication express.js boilerplate app built w./ handlebars + mongo
 
+*View the deployed version of this repo [here](https://jwt-auth-boilerplate.herokuapp.com/)
+
 Demo
 ------------
 View a live demo here: [link](https://jwt-auth-boilerplate.herokuapp.com/)
@@ -47,5 +49,5 @@ To Do // Tasks:
 * [x] save token in local storage
 * [x] save token in cookies
 * [ ] set up local strategy for passport.js
-* [ ] Deploy to Heroku
+* [x] Deploy to Heroku
 

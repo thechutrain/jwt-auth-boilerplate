@@ -62,3 +62,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - refactored auth middleware, so user info gets saved in `req.user` after getting verified
 ### BUGS
 - need to clear cache after user logs out
+
+## [jwt-cookies-v1] - 2017-04-18
+### FIXES
+- fixed clear cache bug
+## TO DO
+- form validation on client side
