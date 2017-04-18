@@ -30,13 +30,13 @@ module.exports.parseTokenCookie = () => {
     // 2. check to see if there is a token ...
     if (!token) {
       req.user = null
-      next()
+      return next()
     } else {
       // 3. verify the token has not been tampered with ...
       jwt.verify(token, process.env.JWT_PASSPHRASE, (err, decoded) => {
         if (err) {
           req.user = null
-          next()
+          return next()
         }
         // 4. valid token save the decoded user data in the request object
         // so all downstream middleware function have access to user credentials
@@ -49,7 +49,7 @@ module.exports.parseTokenCookie = () => {
         iat: 1492522949 }
         */
         req.user = decoded
-        next()
+        return next()
       }) // ends jwt.verity
     }
   }
