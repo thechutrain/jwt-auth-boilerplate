@@ -72,7 +72,8 @@ router.post('/logout', (req, res) => {
   /*
   * To log out, simply send back a cookie with the same key of 'token' and have an empty string value
   */
-  res.cookie('token', '')
+  // res.cookie('token', '')
+  res.clearCookie('token')
   res.json({msg: 'you are logged out now'})
 })
 

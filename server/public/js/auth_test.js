@@ -14,7 +14,9 @@ $(document).ready(function () {
 
   function getAdminData () {
     let msg
-    axios.get('/api/admin-only/data').then(function (response) {
+    axios.get('/api/admin-only/data', {
+      headers: { 'cache-control': 'no-cache' }
+    }).then(function (response) {
       msg = $('<p>').text(response.data.msg)
       adminData.append(msg)
     }).catch(function (err) {
@@ -27,7 +29,9 @@ $(document).ready(function () {
 
   function getUserData () {
     let msg
-    axios.get('/api/logged-in-only/data').then(function (response) {
+    axios.get('/api/logged-in-only/data', {
+      headers: { 'cache-control': 'no-cache' }
+    }).then(function (response) {
       msg = $('<p>').text(response.data.msg)
       userData.append(msg)
     }).catch(function(err) {
