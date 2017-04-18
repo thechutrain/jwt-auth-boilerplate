@@ -5,22 +5,29 @@
 
 Demo
 ------------
-![demo](./.notes/jwt-beta-demo.gif)
+View a live demo here: [link](https://jwt-auth-boilerplate.herokuapp.com/)
+![demo](./.notes/jwt-cookies-beta-demo.gif)
+
 
 Getting Started
 ---------------
+* make sure you have mongo db already installed, and have it running before starting the app. The mongo server can be started with `$ mongod`
+
 ```
 $ git clone git@github.com:thechutrain/jwt-auth-boilerplate.git
-
+$ cd jwt-auth-boilerplate/
+$ git checkout -b origin/jwt-cookies-v1
+$ npm install
+$ npm run dev
 ```
 
+Make sure to change the passphrase in the `.env` file in your root directory before deployment!!
 
-make a .env file in your root directory
-```
-MONGODB_URI="mongodb://localhost/[name-of-your-database]"
-```
+* if you're using BASH, and not a zsh shell, you may get errors with the testing scripts if you don't take out the export statement in the test script commands in package.json
 
-* if you're using BASH, and not a zsh shell, take out the export statement in the test script ...
+Deploying to Heroku
+--------------------
+
 
 To Do // Tasks:
 -------
@@ -30,7 +37,9 @@ To Do // Tasks:
 * [x] create a separate mongo testing database
 * [x] set up travis ci for mongo testing
 * [x] add eslint w. standard `npm run lint --s`
-* [ ] set up bycrypt pre-save for user password
+* [x] set up bycrypt pre-save for user password
+* [x] save token in local storage
+* [x] save token in cookies
 * [ ] set up local strategy for passport.js
 * [ ] Deploy to Heroku
 
