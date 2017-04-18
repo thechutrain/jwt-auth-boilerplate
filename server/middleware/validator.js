@@ -3,18 +3,18 @@ module.exports.validRegistration = () => {
     // const username = req.body.username || ''
     const password = req.body.password || ''
     const password2 = req.body.password2 || ''
-    const errorsArray = []
+    const errMsgs = []
     let isValid = true
     if (password !== password2) {
-      errorsArray.push('Passwords must match')
+      errMsgs.push('Passwords must match')
       isValid = false
     } else if (password === '') {
-      errorsArray.push('Password cannot be empty')
+      errMsgs.push('Password cannot be empty')
       isValid = false
     }
-    // TO DO more validation??
+    // TO DO more validation yo!
     if (!isValid) {
-      return res.json({ error: true, errorsArray })
+      return res.json({ error: true, errMsgs })
     }
     next()
   }
@@ -22,10 +22,21 @@ module.exports.validRegistration = () => {
 
 module.exports.validLogin = () => {
   return function (req, res, next) {
+    const errMsgs = []
+    let isValid = true
     const username = req.body.username || ''
     const password = req.body.password || ''
-    if (password === '' || username === '') {
-      res.json({error: true, errorsArray: ['Username or Password cannot be empty']})
+    if (password === '') {
+      errMsgs.push('Password cannot be empty')
+      isValid = false
+    } else if (username === '') {
+      errMsgs.push('Username cannot be empty')
+      isValid = false
+    }
+    // ADD MORE VALIDATION HERE
+
+    if (!isValid) {
+      return res.json({error: true, errMsgs})
     }
     next()
   }
