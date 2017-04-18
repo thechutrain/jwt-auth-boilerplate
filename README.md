@@ -38,6 +38,7 @@ To Do // Tasks:
 * [x] set up travis ci for mongo testing
 * [x] add eslint w. standard `npm run lint --s`
 * [x] set up bycrypt pre-save for user password
+* [x] set up bycrypt pre-save for user password
 * [x] save token in local storage
 * [x] save token in cookies
 * [ ] set up local strategy for passport.js
