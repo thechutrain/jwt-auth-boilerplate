@@ -9,7 +9,8 @@
     "test": "concurrently \"npm run connect-test-db\" \"npm run mocha-tests\" ",
     "travis-test": "find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
     "dev": "nodemon server/server.js",
-    "lint": "node_modules/.bin/eslint --fix server/"
+    "lint": "node_modules/.bin/eslint --fix server/",
+    "start": "node server/server"
   },
   "repository": {
     "type": "git",

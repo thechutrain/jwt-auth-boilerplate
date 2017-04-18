@@ -27,7 +27,12 @@ Make sure to change the passphrase in the `.env` file in your root directory bef
 
 Deploying to Heroku
 --------------------
-
+* Make sure to have the cli-tools and a heroku account before you do the following steps:
+1. `$ heroku create [your-app-name]`
+2. go to [https://dashboard.heroku.com/apps](https://dashboard.heroku.com/apps)
+3. Find your app, go to the 'Add-ons' section, and search for "mLab"
+4. Provision a free "mLab MongoDB :: Mongodb"
+5. `$ git push heroku origin/jwt-cookies-v1:master`
 
 To Do // Tasks:
 -------
