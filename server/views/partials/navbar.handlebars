@@ -6,9 +6,14 @@
         HOME
       </a>
       <ul class="nav navbar-nav">
-        <li><a href="/login">login</a></li>
-        <li><a href="/register">register</a></li>
-        <li><a id="logout-link" href="#">logout</a></li>
+        {{#if user }}
+          <p class="navbar-text navbar-right"> Signed in as: <strong>{{ user.username }}</strong></p>
+          <li><a id="logout-link" href="#">logout</a></li>
+        {{else}}
+          <li><a href="/login">login</a></li>
+          <li><a href="/register">register</a></li>
+        {{/if}}
+        {{!--<li><a id="logout-link" href="#">logout</a></li>--}}
       </ul>
     </div>
   </div>

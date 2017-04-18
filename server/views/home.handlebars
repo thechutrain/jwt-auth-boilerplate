@@ -1,6 +1,14 @@
 <h1> {{ msg }} </h1>
 
 <div class="row">
+  {{!-- links to protected routes--}}
+  <div class="class-sm-12">
+    <ul>
+      <li><a href="/user-only">User only</a>: user must be signed in to access this link</li>
+      <li><a href="/admin-only">Admin only</a>: user must be an admin to access this link</li>
+    </ul>
+  </div>
+
   {{!-- Admin Only Data --}}
   <div class="col-sm-6">
     <div class="panel panel-default">
