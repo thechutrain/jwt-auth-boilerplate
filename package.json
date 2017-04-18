@@ -27,6 +27,7 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "concurrently": "^3.4.0",
+    "cookie-parser": "^1.4.3",
     "dirty-chai": "^1.2.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
