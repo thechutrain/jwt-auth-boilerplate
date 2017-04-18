@@ -7,6 +7,7 @@
 
 Demo
 ------------
+View a live demo here: [link](https://jwt-auth-boilerplate.herokuapp.com/)
 ![demo](./.notes/jwt-cookies-beta-demo.gif)
 
 
