@@ -4,8 +4,7 @@ const adminOnly = require('../middleware/checkAuth').adminOnly
 const anyUserOnly = require('../middleware/checkAuth').anyUserOnly
 const User = require('../models/user')
 
-// const jwt = require('jsonwebtoken')
-
+// ROUTE for testing!!
 router.get('/users', (req, res) => {
   User.find({}, 'username isAdmin', (err, result) => {
     if (err) { return res.json({ err }) }
