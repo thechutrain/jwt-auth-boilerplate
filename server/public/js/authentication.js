@@ -19,7 +19,7 @@ $(document).ready(function () {
     const formData = getFormData()
     axios.post('/auth/login', formData).then(function (response) {
       console.dir(response)
-      debugger
+      // debugger
       window.location.replace('/')
     })
   }
@@ -29,7 +29,7 @@ $(document).ready(function () {
     const formData = getFormData()
     axios.post('/auth/register', formData).then(function (response) {
       console.dir(response)
-      debugger
+      // debugger
       window.location.replace('/')
     })
   }
@@ -39,7 +39,7 @@ $(document).ready(function () {
     axios.post('/auth/logout').then(function (response) {
       if (!response.data.error) {
         console.log('successfully logged you out')
-        debugger
+        // debugger
         window.location.replace('/')
       } else {
         console.warn('Error loggin you out yooo')
