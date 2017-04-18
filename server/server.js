@@ -9,7 +9,6 @@ require('dotenv').load()
 
 // ========== Create express app ============
 const app = express()
-app.set('x-powered-by', false)
 const PORT = process.env.PORT || 3000
 app.set('x-powered-by', false)
 
@@ -18,13 +17,12 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(parseTokenCookie()) // custom middleware function I wrote to parse the cookie
 //  ======= testing, cookie and req ==========
-// app.use((req, res, next) => {
-//   console.log('=========COOOKIES=======')
-//   console.log(req.cookies)
-//   console.log('========= END of COOOKIES=======')
-//   next()
-// })
-
+app.use((req, res, next) => {
+  console.log('=========COOOKIES=======')
+  console.log(req.cookies)
+  console.log('========= END of COOOKIES=======')
+  next()
+})
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
