@@ -1,4 +1,5 @@
 /* global $, axios, localStorage */
+'use strict'
 $(document).ready(function () {
   if (window.location.pathname !== '/') {
     return
@@ -12,17 +13,12 @@ $(document).ready(function () {
   console.log(token)
 
   function getAdminData () {
-    axios.get('/api/admin-only/data', {
-      headers: { token: token }
-    }).then(function (response) {
-      // console.log(response)
-      var msg
-      if (response.data.error) {
-        console.dir(response.data)
-        msg = $('<p>').text('You must be an admin to view this data')
-      } else {
-        msg = $('<p>').text(response.data.msg)
-      }
+    let msg
+    axios.get('/api/admin-only/data').then(function (response) {
+      msg = $('<p>').text(response.data.msg)
+      adminData.append(msg)
+    }).catch(function (err) {
+      msg = $('<p>').text('You must be an admin to view this data')
       adminData.append(msg)
     })
   }
@@ -30,17 +26,12 @@ $(document).ready(function () {
   getAdminData()
 
   function getUserData () {
-    axios.get('/api/logged-in-only/data', {
-      headers: { token: token }
-    }).then(function (response) {
-      var msg
-      if (response.data.error) {
-        console.dir(response.data)
-        msg = $('<p>').text('You must be signed in to view this data')
-      } else {
-        console.log(response.data)
-        msg = $('<p>').text(response.data.msg)
-      }
+    let msg
+    axios.get('/api/logged-in-only/data').then(function (response) {
+      msg = $('<p>').text(response.data.msg)
+      userData.append(msg)
+    }).catch(function(err) {
+      msg = $('<p>').text('You must be signed in to view this data')
       userData.append(msg)
     })
   }
