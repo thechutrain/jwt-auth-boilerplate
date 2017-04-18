@@ -9,6 +9,12 @@ Demo
 
 Getting Started
 ---------------
+```
+$ git clone git@github.com:thechutrain/jwt-auth-boilerplate.git
+
+```
+
+
 make a .env file in your root directory
 ```
 MONGODB_URI="mongodb://localhost/[name-of-your-database]"

@@ -11,6 +11,7 @@ require('dotenv').load()
 const app = express()
 app.set('x-powered-by', false)
 const PORT = process.env.PORT || 3000
+app.set('x-powered-by', false)
 
 // ========== middleware ============
 app.use(morgan('dev'))
