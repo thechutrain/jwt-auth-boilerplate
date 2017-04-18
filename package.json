@@ -8,7 +8,8 @@
     "mocha-tests": "export PORT=8080 NODE_ENV='testing'; find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
     "test": "concurrently \"npm run connect-test-db\" \"npm run mocha-tests\" ",
     "travis-test": "find ./test -name '*test.js' | node_modules/.bin/mocha --recursive",
-    "dev": "nodemon server/server.js"
+    "dev": "nodemon server/server.js",
+    "lint": "node_modules/.bin/eslint --fix server/"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,12 @@
   },
   "homepage": "https://github.com/thechutrain/jwt-auth-boilerplate#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "concurrently": "^3.4.0",
+    "cookie-parser": "^1.4.3",
     "dirty-chai": "^1.2.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
@@ -35,5 +38,13 @@
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }

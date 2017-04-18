@@ -3,11 +3,13 @@ const mongoose = require('mongoose')
 module.exports.connect = (uri) => {
   return new Promise((resolve, reject) => {
     mongoose.Promise = global.Promise
-    const options = {}
-    mongoose.connect(uri, options, function(err) {
-      if (err) { 
+    const options = {
+      config: {autoIndex: false}
+    }
+    mongoose.connect(uri, options, function (err) {
+      if (err) {
         console.log(err)
-        reject()
+        reject(err)
       } else {
         console.log(`Successfully connected to db @ "${uri}"`)
         resolve()

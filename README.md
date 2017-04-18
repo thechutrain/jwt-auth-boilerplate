@@ -9,6 +9,12 @@ Demo
 
 Getting Started
 ---------------
+```
+$ git clone git@github.com:thechutrain/jwt-auth-boilerplate.git
+
+```
+
+
 make a .env file in your root directory
 ```
 MONGODB_URI="mongodb://localhost/[name-of-your-database]"
@@ -23,6 +29,7 @@ To Do // Tasks:
 * [x] create a basic mongo database file and get it set up properly 
 * [x] create a separate mongo testing database
 * [x] set up travis ci for mongo testing
+* [x] add eslint w. standard `npm run lint --s`
 * [ ] set up bycrypt pre-save for user password
 * [ ] set up local strategy for passport.js
 * [ ] Deploy to Heroku
