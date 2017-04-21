@@ -1,5 +1,4 @@
 const express = require('express')
-const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
@@ -11,38 +10,21 @@ require('dotenv').load()
 const app = express()
 app.set('x-powered-by', false)
 const PORT = process.env.PORT || 3000
-app.set('x-powered-by', false)
+
+// ========== server bundle.js file that webpack bundles ========
+app.use(express.static(path.join(__dirname, '../', '/client/dist')))
 
 // ========== middleware ============
 app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(parseTokenCookie()) // custom middleware function I wrote to parse the cookie
-//  ======= testing, cookie and req ==========
-// app.use((req, res, next) => {
-//   console.log('=========COOOKIES=======')
-//   console.log(req.cookies)
-//   console.log('========= END of COOOKIES=======')
-//   next()
-// })
-
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'public')))
-// set up handlebars
-app.set('views', path.join(__dirname, '/views'))
-app.set('view engine', 'handlebars')
-app.engine('handlebars', exphbs({
-  defaultLayout: 'main',
-  layoutsDir: path.join(__dirname, '/views/layouts'),
-  partialsDir: path.join(__dirname, '/views/partials')
-}))
 
-app.get('/test', (req, res) => { res.json({ msg: 'hello world' }) })
-app.use('/', require('./controllers/htmlRouter'))
+// ========== routing ============
+app.get('/', (req, res) => { res.sendFile(path.join(__dirname, '/index.html')) }) // react entry pt
 app.use('/auth', require('./controllers/authRouter'))
 app.use('/api', require('./controllers/apiRouter'))
-
 // ========== start server ============
 
 if (process.env.NODE_ENV !== 'testing') {
