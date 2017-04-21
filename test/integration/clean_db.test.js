@@ -10,7 +10,7 @@
 // // server, database, and testing config files
 // const server = require('../../server/server')
 // const MONGOOSE_DB = require('../config').database
-// const User = require('../config').User
+// // const User = require('../config').User
 
 // const title =
 // `

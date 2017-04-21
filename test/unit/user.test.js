@@ -6,11 +6,11 @@ const expect = require('chai').expect
 chai.use(dirtyChai)
 
 // server, database, and testing config files
-const server = require('../../server/server')
+// const server = require('../../server/server')
 const MONGOOSE_DB = require('../config').database
 const User = require('../config').User
 
-const title = 
+const title =
 `
 ==============================
 UNIT TEST - user collection
@@ -19,8 +19,8 @@ UNIT TEST - user collection
 
 describe(title, () => {
   before(() => {
-    MONGOOSE_DB.connection.once('connected',() => {
-      MONGOOSE_DB.connection.db.dropDatabase();
+    MONGOOSE_DB.connection.once('connected', () => {
+      MONGOOSE_DB.connection.db.dropDatabase()
       console.log('dropping db')
     })
   })
@@ -52,6 +52,4 @@ describe(title, () => {
       done()
     })
   })
-
-
 })

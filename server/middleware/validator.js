@@ -15,8 +15,9 @@ module.exports.validRegistration = () => {
     // TO DO more validation yo!
     if (!isValid) {
       return res.json({ error: true, errMsgs })
+    } else {
+      next()
     }
-    next()
   }
 }
 
@@ -37,7 +38,8 @@ module.exports.validLogin = () => {
 
     if (!isValid) {
       return res.json({error: true, errMsgs})
+    } else {
+      next()
     }
-    next()
   }
 }
