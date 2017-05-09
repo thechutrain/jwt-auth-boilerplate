@@ -18,7 +18,7 @@ Getting Started
 ```
 $ git clone git@github.com:thechutrain/jwt-auth-boilerplate.git
 $ cd jwt-auth-boilerplate/
-$ git checkout -b origin/jwt-cookies-v1
+$ git checkout -b [Local-Branch-Name] origin/jwt-cookies-v1
 $ npm install
 $ npm run dev
 ```
