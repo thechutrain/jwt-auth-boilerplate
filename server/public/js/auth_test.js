@@ -1,17 +1,18 @@
 /* global $, axios, localStorage */
+/* this file is mearly to check that the authentication is working
+* on the home page, by making a request from the home page.
+*
+*/
 'use strict'
 $(document).ready(function() {
 	if (window.location.pathname !== '/') {
 		return
 	}
-	// data selectors
+	// ========== I. variables ==================
 	var adminData = $('#admin-data-target')
 	var userData = $('#logged-in-data-target')
 
-	// console.log("Youre on the home page budddy")
-	var token = localStorage.getItem('token')
-	console.log(token)
-
+	// ========== II. Request Functions ==================
 	function getAdminData() {
 		var msg
 		axios
@@ -27,8 +28,6 @@ $(document).ready(function() {
 				adminData.append(msg)
 			})
 	}
-	// console.log('calling getAdmin data ...')
-	getAdminData()
 
 	function getUserData() {
 		var msg
@@ -45,6 +44,8 @@ $(document).ready(function() {
 				userData.append(msg)
 			})
 	}
-	// console.log('calling getUser data ...')
+
+	// ========== III. Invoking Functions ==================
+	getAdminData()
 	getUserData()
 })

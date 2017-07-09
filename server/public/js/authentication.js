@@ -1,8 +1,7 @@
 /* global $, axios */
 'use strict'
 $(document).ready(function() {
-	console.info('loaded file')
-	// event listeners for: login-btn && registration-btn
+	console.info('authentication.js file loaded')
 	// ========== I. helper functions ==================
 	function getFormData() {
 		const formData = {}
