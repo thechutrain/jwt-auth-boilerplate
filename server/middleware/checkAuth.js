@@ -1,56 +1,72 @@
-// const jwt = require('jsonwebtoken')
-// // const User = require('../models/user')
-//
-// module.exports.adminOnly = () => {
-//   return function (req, res, next) {
-//     if (req.user === null) {
-//       return res.status(401).send('Admin only')
-//     } else if (!req.user.isAdmin) {
-//       return res.status(401).send('Admin only')
-//     }
-//     next()
-//   }
+const jwt = require('jsonwebtoken')
+
+module.exports.parseToken = () => (req, res, next) => {
+	// you can get the token from cookies or from a header key you set
+	const token = req.cookies.token || req.headers.token || null
+	if (token) {
+		jwt.verify(token, process.env.JWT_PASSPHRASE, (err, decoded) => {
+			req.user = err
+				? { isValid: false }
+				: Object.assign({}, decoded, { isValid: true })
+			return next()
+		})
+	} else {
+		req.user = { isValid: false }
+		return next()
+	}
+}
+
+// ======== helper functions ===========
+// checks to see if user is an admin
+module.exports.adminOnly = () => {
+	return function(req, res, next) {
+		if (req.user === null) {
+			return res.status(401).send('Admin only')
+		} else if (!req.user.isAdmin) {
+			return res.status(401).send('Admin only')
+		}
+		next()
+	}
+}
+
+// checks to see if user is a valid user
+module.exports.anyUserOnly = () => {
+	return (req, res, next) => {
+		if (!req.user.isValid) {
+			return res.status(401).send('Logged in Users only')
+		}
+		next()
+	}
+}
+
+// module.exports = function() {
+// 	return function(req, res, next) {
+// 		// you can get the token from cookies or from a header key you set
+// 		const token = req.cookies.token || req.headers.token || null
+// 		// console.log(token)
+// 		if (token) {
+// 			jwt.verify(token, process.env.JWT_PASSPHRASE, (err, decoded) => {
+// 				// alternative
+// 				if (err) {
+// 					// DEBUGGING
+// 					console.log('INVALID USER - jwtAuthMiddleware.js')
+// 					req.user = { isValid: false }
+// 				} else {
+// 					// DEBUGGING
+// 					console.log('VALID USER - jwtAuthMiddleware.js')
+// 					req.user = Object.assign({}, decoded, { isValid: true })
+// 					// console.log('-------')
+// 					// console.log(req.user)
+// 					// console.log('---------')
+// 				}
+// 				return next()
+// 			})
+// 		} else {
+// 			// DEBUGGING
+// 			// console.log('NO TOKEN, NO USER - jwtAuthMiddleware.js')
+// 			req.user = { isValid: false }
+// 			return next()
+// 		}
+// 	}
 // }
 //
-// module.exports.anyUserOnly = () => {
-//   return (req, res, next) => {
-//     if (req.user === null) {
-//       return res.status(401).send('Logged in Users only')
-//     } else if (!req.user) {
-//       return res.status(401).send('Logged in Users only')
-//     }
-//     next()
-//   }
-// }
-//
-// module.exports.parseTokenCookie = () => {
-//   return (req, res, next) => {
-//     // 1. get the token from request cookie
-//     const token = req.cookies.token || req.headers['token']
-//     // 2. check to see if there is a token ...
-//     if (!token) {
-//       req.user = null
-//       return next()
-//     } else {
-//       // 3. verify the token has not been tampered with ...
-//       jwt.verify(token, process.env.JWT_PASSPHRASE, (err, decoded) => {
-//         if (err) {
-//           req.user = null
-//           return next()
-//         }
-//         // 4. valid token save the decoded user data in the request object
-//         // so all downstream middleware function have access to user credentials
-//         /*
-//         ex. of schema of what req.user will look like
-//         req.user:  { _id: '58f56dcb6200e636e825383c',
-//         username: 'alan',
-//         isAdmin: true,
-//         exp: 1492526549,
-//         iat: 1492522949 }
-//         */
-//         req.user = decoded
-//         return next()
-//       }) // ends jwt.verity
-//     }
-//   }
-// }

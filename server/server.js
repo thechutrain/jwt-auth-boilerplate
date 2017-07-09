@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 const path = require('path')
-const tokenChecker = require('./middleware/tokenChecker')
+const parseToken = require('./middleware/checkAuth').parseToken
 require('dotenv').load()
 
 // ========== Create express app ============
@@ -15,7 +15,7 @@ app.set('x-powered-by', false)
 // ========== middleware ============
 app.use(morgan('dev'))
 app.use(cookieParser())
-app.use(tokenChecker()) // custom middleware function to parse a token in header or cookie, and to save info on req.user
+app.use(parseToken()) // custom middleware function to parse a token in header or cookie, and to save info on req.user
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
