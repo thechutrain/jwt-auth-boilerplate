@@ -68,3 +68,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fixed clear cache bug
 ## TO DO
 - form validation on client side
+
+
+## [jwt-cookies-v1] - 2017-07-09
+### Added
+- added a more simple middleware function `tokenChecker` that will either parse the cookie or header and save the info on `req.user`

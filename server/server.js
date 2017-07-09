@@ -25,10 +25,10 @@ app.set('view engine', 'handlebars')
 app.engine(
 	'handlebars',
 	exphbs({
-  defaultLayout: 'main',
-  layoutsDir: path.join(__dirname, '/views/layouts'),
-  partialsDir: path.join(__dirname, '/views/partials')
-})
+		defaultLayout: 'main',
+		layoutsDir: path.join(__dirname, '/views/layouts'),
+		partialsDir: path.join(__dirname, '/views/partials')
+	})
 )
 
 // =========== Routes =============
@@ -39,18 +39,18 @@ app.use('/api', require('./controllers/apiRouter'))
 // ========== start server ============
 if (process.env.NODE_ENV !== 'testing') {
 	// connect to the database
-  require('./models')
+	require('./models')
 		.connect(process.env.MONGODB_URI)
 		.then(() => {
-  console.log('connected to the database ...')
-  app.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`)
-  })
-})
+			console.log('connected to the database ...')
+			app.listen(PORT, () => {
+				console.log(`Listening on port: ${PORT}`)
+			})
+		})
 		.catch(err => {
-  console.log('Mongo DB connection error')
-  console.log(err)
-})
+			console.log('Mongo DB connection error')
+			console.log(err)
+		})
 }
 
 module.exports = app
