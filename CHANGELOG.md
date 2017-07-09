@@ -71,5 +71,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [jwt-cookies-v1] - 2017-07-09
-### Added
-- added a more simple middleware function `tokenChecker` that will either parse the cookie or header and save the info on `req.user`
+### Changed
+- `checkAuth.js` file so that it will always store an object within the  `req.user`, and will have a minimum of a key of `isValid`.
+
+### Removed
+- extra client side js files for handling login or registration form submission. All of it is now in `authentication.js` file
