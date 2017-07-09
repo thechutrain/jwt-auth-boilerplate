@@ -6,7 +6,7 @@
         HOME
       </a>
       <ul class="nav navbar-nav">
-        {{#if user }}
+        {{#if user.isValid }}
           <p class="navbar-text navbar-right"> Signed in as: <strong>{{ user.username }}</strong></p>
           <li><a id="logout-link" href="#">logout</a></li>
         {{else}}
